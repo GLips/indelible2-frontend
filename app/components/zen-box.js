@@ -1,8 +1,12 @@
 import Ember from "ember";
 
 export default Ember.Component.extend({
+  classNames: ['zen-box'],
   content: "",
   startTime: 0,
+  focus: function() {
+    this.$('> textarea').focus();
+  }.on('didInsertElement'),
   charactersPerMinute: function() {
     var content = this.get('content'),
         timeElapsed = this.get('timeElapsed');
