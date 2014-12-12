@@ -1,7 +1,29 @@
-.circle
+$circle-circumference: 100px
+$border-width: 2px
+
+.zen-circle
   border-radius: 100%
-  width: 100px
-  height: 100px
-  background: #CEE
+.bounding-circle
+  border-radius: 100%
+  border: $border-width dashed black
+  position: relative
+
+.zen-tracker
+  width: $circle-circumference
+  height: $circle-circumference
+  position: absolute
+  top: -$circle-circumference/4
+  left: -$circle-circumference/4
+  transform-origin: center
+  background: rgba(200, 255, 255, 0.75)
   transition: width 0.25s, height 0.25s
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.25)
+
+.outer-bound
+  width: $circle-circumference * 2
+  height: $circle-circumference * 2
+  margin: 20px auto 0
+.inner-bound
+  width: $circle-circumference * 0.5
+  height: $circle-circumference * 0.5
+  margin-top: ($circle-circumference * 0.75) - $border-width
+  margin-left: ($circle-circumference * 0.75) - $border-width

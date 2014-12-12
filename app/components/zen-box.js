@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   content: "",
   startTime: 0,
   focus: function() {
-    this.$('> textarea').focus();
+    this.$('> input').focus();
   }.on('didInsertElement'),
   charactersPerMinute: function() {
     var content = this.get('content'),
