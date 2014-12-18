@@ -1,5 +1,6 @@
 <div class="input-wrapper">
   <div class="input-shadow"></div>
-  {{input value=content}}
+  {{input value=model.content}}
 </div>
-{{zen-circle modifier=charactersPerMinute}}
+CPS: {{model.history.CPS}}
+{{zen-circle modifier=charactersPerSecond target=model.history.targetCPS}}

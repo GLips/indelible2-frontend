@@ -12,18 +12,17 @@ $border-width: 2px
   width: $circle-circumference
   height: $circle-circumference
   position: absolute
-  top: -$circle-circumference/4
-  left: -$circle-circumference/4
+  top: 0
+  left: 0
   transform-origin: center
   background: rgba(200, 255, 255, 0.75)
-  transition: width 0.25s, height 0.25s
 
 .outer-bound
-  width: $circle-circumference * 2
-  height: $circle-circumference * 2
+  width: $circle-circumference * 3
+  height: $circle-circumference * 3
   margin: 20px auto 0
 .inner-bound
-  width: $circle-circumference * 0.5
-  height: $circle-circumference * 0.5
-  margin-top: ($circle-circumference * 0.75) - $border-width
-  margin-left: ($circle-circumference * 0.75) - $border-width
+  width: $circle-circumference
+  height: $circle-circumference
+  margin-top: ($circle-circumference) - $border-width
+  margin-left: ($circle-circumference) - $border-width
