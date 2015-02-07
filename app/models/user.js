@@ -6,8 +6,8 @@ export default DS.Model.extend({
   passwordConfirm: DS.attr('string'),
   email: DS.attr('string'),
   login: function() {
-    // TODO: Persist login in Ember after login
-    // TODO: Bootstrap user logged in information on initial load.
+    // loggingIn is a flag used by the adapter to change the URL POSTed to
+    // to log the user in.
     this.set('loggingIn', true);
     return this.save();
   },

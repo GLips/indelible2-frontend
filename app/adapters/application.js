@@ -8,6 +8,8 @@ export default DS.RESTAdapter.extend({
   ajaxError: function(jqXHR) {
     var error = this._super(jqXHR);
 
+    // Server has returned an 'unprocessable entity' error, extract
+    // the fields with error messages for Ember.
     if (jqXHR && jqXHR.status === 422) {
       var response = Ember.$.parseJSON(jqXHR.responseText),
       errors = {};

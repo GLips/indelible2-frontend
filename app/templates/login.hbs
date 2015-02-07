@@ -1,4 +1,4 @@
-<h1>Register</h1>
+<h1>Log in</h1>
 <form {{action 'login' on='submit'}}>
   <label for="username">username</label>
   {{input id="username" name="username" value=model.username}}
@@ -9,12 +9,12 @@
   <br/>
 
   <label for="password">password</label>
+  {{!-- TODO: Make an input area partial to handle error reporting automatically. --}}
   {{input id="password" name="password" value=model.password type="password"}}
   <br/>
   {{#each errors.password}}
     {{this.message}}
   {{/each}}
   <br/>
-
   {{input type="submit" value="login"}}
 </form>
