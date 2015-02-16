@@ -18,6 +18,7 @@ export default DS.Model.extend({
     }
   }.observes('entry.content'),
 
+  // TODO: Figure out why this can sometimes go negative.
   CPS: function() {
     var timeline  = this.get('timeline'),
         range     = this.get('range');
