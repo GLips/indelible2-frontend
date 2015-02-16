@@ -3,8 +3,8 @@
   <label for="username">username</label>
   {{input id="username" name="username" value=model.username}}
   <br/>
-  {{#each errors.username}}
-    {{this.message}}
+  {{#each error in errors.username}}
+    {{error.message}}
   {{/each}}
   <br/>
 
@@ -12,8 +12,8 @@
   {{!-- TODO: Make an input area partial to handle error reporting automatically. --}}
   {{input id="password" name="password" value=model.password type="password"}}
   <br/>
-  {{#each errors.password}}
-    {{this.message}}
+  {{#each error in errors.password}}
+    {{error.message}}
   {{/each}}
   <br/>
   {{input type="submit" value="login"}}
