@@ -7,7 +7,7 @@ export default Ember.Mixin.create({
       // We want to send the user to their requested page after
       // they've logged in.
       this.set('session.requestedTransition', transition);
-      this.transitionTo('login');
+      this.transitionTo('user.login');
     }
   }
 });

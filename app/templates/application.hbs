@@ -7,9 +7,9 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           {{#if session.isLoggedIn}}
-            {{link-to 'logout' 'logout'}}
+            {{link-to 'logout' 'user.logout'}}
           {{else}}
-            {{link-to 'sign in' 'login'}}
+            {{link-to 'sign in' 'user.login'}}
           {{/if}}
         </li>
       </ul>
