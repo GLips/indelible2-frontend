@@ -1,6 +1,19 @@
 <div class="header-container container">
   <nav class="navbar navbar-default navbar-fixed-top">
-    <h1 id='title'>{{link-to 'Indelible' 'index'}}</h1>
+    <div class="navbar-header">
+      {{link-to 'Indelible' 'index' class='navbar-brand'}}
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          {{#if session.isLoggedIn}}
+            {{link-to 'logout' 'logout'}}
+          {{else}}
+            {{link-to 'sign in' 'login'}}
+          {{/if}}
+        </li>
+      </ul>
+    </div>
   </nav>
 </div>
 
