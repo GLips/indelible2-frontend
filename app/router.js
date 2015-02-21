@@ -9,6 +9,7 @@ Router.map(function() {
   this.resource('user', function() {
     this.route('register');
     this.route('login');
+    this.route('logout');
   });
   this.resource('entries', function() {
     this.route('new');

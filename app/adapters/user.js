@@ -7,6 +7,8 @@ export default app.extend({
     // to point to a different URL when logging in vs. registering.
     if(record.get('loggingIn')) {
       type = "user/login";
+    } else if(record.get('loggingOut')) {
+      type = "user/logout";
     }
     return this._super(type, id, record);
   }

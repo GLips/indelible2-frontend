@@ -13,13 +13,22 @@ var Session = Ember.Object.extend({
   currentUser: function() {
     return this.get('_currentUser');
   }.property('_currentUser'),
-  logIn: function(user) {
+  login: function(user) {
     if(user.get('constructor.typeKey') === 'user') {
       this.set('_currentUser', user);
     }
   },
-  logOut: function() {
-    this.set('_currentUser', false);
+  logout: function() {
+    var user = this.get('currentUser'),
+        _this = this;
+
+    if(user.get('constructor.typeKey') === 'user') {
+      return user.logout().then(function() {
+        _this.set('_currentUser', false);
+      }, function(wat) {
+        /* Catch errors */
+      });
+    }
   },
   isLoggedIn: function() {
     return (this.get('_currentUser') !== false);
