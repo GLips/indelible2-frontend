@@ -4,9 +4,10 @@ export default Ember.ObjectController.extend({
   actions: {
     login: function() {
       var user = this.get('model'),
+          password = user.get('password'),
           _this = this;
       user.login().then(function(data) {
-        _this.get('session').login(data);
+        _this.get('session').login(data, password);
 
         // Will be true if the user was directed to log in from a
         // route requiring authorization.
