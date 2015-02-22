@@ -5,13 +5,18 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li>
           {{#if session.isLoggedIn}}
+        <li>
             {{link-to 'logout' 'user.logout'}}
-          {{else}}
-            {{link-to 'sign in' 'user.login'}}
-          {{/if}}
         </li>
+          {{else}}
+        <li>
+            {{link-to 'log in' 'user.login'}}
+        </li>
+        <li>
+            {{link-to 'register' 'user.register'}}
+        </li>
+          {{/if}}
       </ul>
     </div>
   </nav>
