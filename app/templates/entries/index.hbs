@@ -1,4 +1,11 @@
-{{link-to 'New Entry' 'entries.new'}}</br>
-{{#each entry in controller}}
-  {{entry.content}}</br>
-{{/each}}
+{{link-to 'New Entry' 'entries.new'}}
+<div class="list-group">
+  {{#each entry in controller}}
+    <a {{action 'decrypteEntry' entry}}class="list-group-item">
+      <span class="label {{if entry.decrypted 'label-info' 'label-success'}}">
+        {{if entry.decrypted "Decrypted" "Encrypted"}}</span> 
+      {{!-- Close span above for whitespace fun --}}
+      {{entry.content}}
+    </a>
+  {{/each}}
+</div>

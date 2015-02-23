@@ -5,16 +5,18 @@ export default DS.Model.extend({
   content: DS.attr('string', { defaultValue: "" }),
   userId: DS.attr('number'),
   history: DS.belongsTo('entry/history'),
-  save: function() {
+  decrypt: function() {
+    this.set('decrypted', true);
     var content = this.get('content'),
-        password = window.localStorage.getItem('passwordHash');
-
-    // Encrypt the journal entry's contents using the user's
-    // hashed password before they're sent to the server.
-    content = CryptoJS.AES.encrypt(content, password);
-    this.set('content', content.toString());
-
-    return this._super();
+        passwordHash = this.get('session.passwordHash');
+    // TODO: Add a timer, flag for 'decrypting' to drive a
+    //       progress bar on the frontend.
+    CryptoJS.AES.decrypt(content, passwordHash);
+    content = CryptoJS.AES.decrypt(content, passwordHash);
+    if(content) {
+      this.set('content', content.toString(CryptoJS.enc.Utf8));
+    }
+    return this;
   }
   // TODO: (FIX) Newly created entries should show up at the
   //       top of the entries list. Currently at bottom.

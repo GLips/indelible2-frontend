@@ -11,6 +11,7 @@ var Session = Ember.Object.extend({
     // TODO: Bootstrap user logged in information on initial load.
   },
   _currentUser: false,
+  _passwordHash: false,
   currentUser: function() {
     return this.get('_currentUser');
   }.property('_currentUser'),
@@ -20,9 +21,20 @@ var Session = Ember.Object.extend({
     }
 
     // Hash and store the password for later encryption and
-    // decryption of journal entries.
-    password = CryptoJS.SHA3(password);
-    window.localStorage.setItem('passwordHash', password);
+    // decryption of journal entries. Password can't be passed
+    // in for users who do a hard refresh on the page, so it
+    // needs to be re-entered
+    if(password) {
+      password = CryptoJS.SHA3(password).toString();
+      window.localStorage.setItem('passwordHash', password);
+      this.set('_passwordHash', password);
+      // TODO: Request user password via modal if it's not in any
+      //       of these places.
+    } else if(window.localStorage.getItem('passwordHash')) {
+      this.set('_passwordHash', window.localStorage.getItem('passwordHash'));
+    } else {
+      this.set('_passwordHash', false);
+    }
   },
   logout: function() {
     var user = this.get('currentUser'),
@@ -39,7 +51,11 @@ var Session = Ember.Object.extend({
   }.property('_currentUser'),
   isLoggedOut: function() {
     return (this.get('_currentUser') === false);
-  }.property('_currentUser')
+  }.property('_currentUser'),
+
+  passwordHash: function() {
+    return this.get('_passwordHash');
+  }.property('_passwordHash')
 });
 
 export default {
@@ -48,5 +64,7 @@ export default {
     container.register('global:session', Session, { singleton: true });
     application.inject('controller', 'session', 'global:session');
     application.inject('route', 'session', 'global:session');
+    application.inject('model', 'session', 'global:session');
+    application.inject('serializer', 'session', 'global:session');
   }
 };
