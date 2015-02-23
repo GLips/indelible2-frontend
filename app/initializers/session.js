@@ -37,12 +37,11 @@ var Session = Ember.Object.extend({
     }
   },
   logout: function() {
-    var user = this.get('currentUser'),
-        _this = this;
+    var user = this.get('currentUser');
 
     if(user.get('constructor.typeKey') === 'user') {
-      return user.logout().then(function() {
-        _this.set('_currentUser', false);
+      return user.logout().then(()=> {
+        this.set('_currentUser', false);
       }, function() { /* Catch errors */ });
     }
   },

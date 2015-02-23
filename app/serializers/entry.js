@@ -15,10 +15,6 @@ export default ApplicationSerializer.extend({
     json.Content = content;
 
     return json;
-  },
-  extractArray: function(store, type, payload, id, requestType) {
-    console.log("Extracting array");
-    return this._super(store, type, payload, id, requestType);
   }
 });
 
