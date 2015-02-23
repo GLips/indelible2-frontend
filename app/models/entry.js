@@ -1,7 +1,8 @@
 /* global CryptoJS */
 import DS from "ember-data";
+import IndModel from "frontend/models/mixins/model";
 
-export default DS.Model.extend({
+export default IndModel.extend({
   content: DS.attr('string', { defaultValue: "" }),
   userId: DS.attr('number'),
   history: DS.belongsTo('entry/history'),
@@ -22,8 +23,6 @@ export default DS.Model.extend({
     }
     return this;
   }
-  // TODO: (FIX) Newly created entries should show up at the
-  //       top of the entries list. Currently at bottom.
   // TODO: Create a registry of globally used variable/accessor
   //       names to replace things like passwordHash everywhere
   // TODO: Content and style for the home page
