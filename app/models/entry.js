@@ -6,6 +6,10 @@ export default DS.Model.extend({
   userId: DS.attr('number'),
   history: DS.belongsTo('entry/history'),
   decrypt: function() {
+    if(this.get('decrypted')) {
+      return this;
+    }
+
     this.set('decrypted', true);
     var content = this.get('content'),
         passwordHash = this.get('session.passwordHash');
@@ -20,8 +24,6 @@ export default DS.Model.extend({
   }
   // TODO: (FIX) Newly created entries should show up at the
   //       top of the entries list. Currently at bottom.
-  // TODO: Redirect to entries index on successful creation of
-  //       a new entry
   // TODO: Create a registry of globally used variable/accessor
   //       names to replace things like passwordHash everywhere
   // TODO: Content and style for the home page
