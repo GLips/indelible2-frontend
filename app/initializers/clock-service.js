@@ -20,5 +20,6 @@ export default {
     container.register('clock:service', ClockService);
     application.inject('component:zen-box', 'clock', 'clock:service');
     application.inject('model:entry/history', 'clock', 'clock:service');
+    application.inject('model:entry', 'clock', 'clock:service');
   }
 };

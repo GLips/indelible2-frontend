@@ -9,6 +9,7 @@ var Session = Ember.Object.extend({
     // Used for grabbing the initial bootstrapped data
     // from the Revel template on initial page load.
     // TODO: Bootstrap user logged in information on initial load.
+    //       could also be done via localStorage.
   },
   _currentUser: false,
   _passwordHash: false,
