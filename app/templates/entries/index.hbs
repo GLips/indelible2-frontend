@@ -1,7 +1,7 @@
 {{link-to 'New Entry' 'entries.new'}}
 <div class="list-group entry-list">
   {{#each entry in controller}}
-    <a {{action 'decrypteEntry' entry}} class="list-group-item">
+    <a {{action 'decryptEntry' entry}} class="list-group-item">
       <span class="label {{if entry.decrypted 'label-info'}} {{if entry.decrypted '' 'label-success'}} {{if entry.decrypting 'label-danger'}}">
         {{#if entry.decrypted}}Decrypted{{else if entry.decrypting}}Decrypting{{else}}Encrypted{{/if}}</span> 
       {{!-- Close span above for whitespace fun --}}
