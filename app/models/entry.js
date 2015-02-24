@@ -14,7 +14,7 @@ export default IndModel.extend({
   // TODO: decrypt() ideally won't mutate the object
   decrypt: function() {
     if(this.get('decrypted') || this.get('decrypting')) {
-      return this;
+      return new Ember.RSVP.Promise((resolve)=>{ resolve(); });
     }
 
     this.set('decrypting', true);
