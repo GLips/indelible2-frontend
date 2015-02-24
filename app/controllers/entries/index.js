@@ -5,7 +5,9 @@ export default Ember.ArrayController.extend({
   sortAscending: false,
   actions: {
     decrypteEntry: function(entry) {
-      entry.decrypt();
+      entry.decrypt().then(()=> {
+        this.transitionToRoute('entries.view', entry);
+      });
     }
   }
 });

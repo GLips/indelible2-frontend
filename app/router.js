@@ -13,6 +13,7 @@ Router.map(function() {
   });
   this.resource('entries', function() {
     this.route('new');
+    this.route('view', { path: "/entries/:entry_id" });
   });
 });
 
