@@ -1,18 +1,23 @@
 {{link-to 'New Entry' 'entries.new'}}
 <div class="list-group entry-list">
-  {{#each entry in controller}}
-    <a {{action 'decryptEntry' entry}} class="list-group-item">
-      <span class="label {{if entry.decrypted 'label-info'}} {{if entry.decrypted '' 'label-success'}} {{if entry.decrypting 'label-danger'}}">
-        {{#if entry.decrypted}}Decrypted{{else if entry.decrypting}}Decrypting{{else}}Encrypted{{/if}}</span> 
-      {{!-- Close span above for whitespace fun --}}
-      {{entry.content}}
-      {{#if entry.decrypting}}
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="{{entry.decryptionPercentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{entry.decryptionPercentage}}%;">
-            <span class="sr-only">60% Complete</span>
+  {{#each month in months}}
+    <span class="list-group-item">
+      <h5>{{month.month}}</h5>
+    </span>
+    {{#each entry in month.entries}}
+      <a {{action 'decryptEntry' entry}} class="list-group-item">
+        <span class="label {{if entry.decrypted 'label-info'}} {{if entry.decrypted '' 'label-success'}} {{if entry.decrypting 'label-danger'}}">
+          {{#if entry.decrypted}}Decrypted{{else if entry.decrypting}}Decrypting{{else}}Encrypted{{/if}}</span> 
+        {{!-- Close span above for whitespace fun --}}
+        {{entry.title}}
+        {{#if entry.decrypting}}
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="{{entry.decryptionPercentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{entry.decryptionPercentage}}%;">
+              <span class="sr-only">60% Complete</span>
+            </div>
           </div>
-        </div>
-      {{/if}}
-    </a>
+        {{/if}}
+      </a>
+    {{/each}}
   {{/each}}
 </div>
